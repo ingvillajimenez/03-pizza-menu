@@ -149,7 +149,7 @@ function Pizza(props) {
 // JavaScript Logic in Components
 function Footer() {
   const hour = new Date().getHours();
-  const openHour = 12;
+  const openHour = 9;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
   console.log(isOpen);
@@ -176,10 +176,7 @@ function Footer() {
       )} */}
 
       {isOpen ? (
-        <div className="order">
-          <p>We're open until {closeHour}:00. Come visit us or order online.</p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHour={closeHour} />
       ) : (
         <p>
           We're happy to welcome you between {openHour}:00 and {closeHour}:00
@@ -189,6 +186,19 @@ function Footer() {
   );
 
   // return React.createElement("footer", null, "We're currently open!");
+}
+
+//////////////////////////////////////////////
+// Extracting JSX Into a New Component
+function Order(props) {
+  return (
+    <div className="order">
+      <p>
+        We're open until {props.closeHour}:00. Come visit us or order online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
 }
 
 // React v18
