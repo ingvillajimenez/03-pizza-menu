@@ -97,6 +97,7 @@ function Menu() {
           ))}
         </ul>
       )} */}
+
       {numPizzas > 0 ? (
         <ul className="pizzas">
           {pizzas.map((pizza) => (
@@ -106,6 +107,7 @@ function Menu() {
       ) : (
         <p>We're still working on our menu. Please come back later :)</p>
       )}
+
       {/* <Pizza
         name="Pizza Spinaci"
         ingredients="Tomato, mozarella, spinach, and ricotta cheese"
@@ -127,6 +129,10 @@ function Menu() {
 function Pizza(props) {
   console.log(props);
 
+  //////////////////////////////////////////////
+  // Conditional Rendering With Multiple Returns
+  if (props.pizzaObj.soldOut) return null;
+
   return (
     <li className="pizza">
       <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
@@ -143,7 +149,7 @@ function Pizza(props) {
 // JavaScript Logic in Components
 function Footer() {
   const hour = new Date().getHours();
-  const openHour = 8;
+  const openHour = 12;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
   console.log(isOpen);
@@ -155,6 +161,10 @@ function Footer() {
   // }
 
   //////////////////////////////////////////////
+  // Conditional Rendering With Multiple Returns
+  // if (!isOpen) return <p>CLOSED</p>;
+
+  //////////////////////////////////////////////
   // Conditional Rendering With &&
   return (
     <footer className="footer">
@@ -164,6 +174,7 @@ function Footer() {
           <button className="btn">Order</button>
         </div>
       )} */}
+
       {isOpen ? (
         <div className="order">
           <p>We're open until {closeHour}:00. Come visit us or order online.</p>
